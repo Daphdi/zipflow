@@ -77,7 +77,7 @@ export default function ProfilePage() {
           <CardHeader className="text-center pb-6">
             <div className="relative mx-auto mb-6">
               <Avatar className="h-32 w-32 mx-auto ring-4 ring-sky-200 shadow-lg">
-                <AvatarImage src={user?.avatar || "/placeholder.svg"} />
+                <AvatarImage src={user?.image || "/placeholder.svg"} />
                 <AvatarFallback className="bg-gradient-to-br from-sky-400 to-blue-600 text-white text-4xl font-bold">
                   {user?.name?.charAt(0).toUpperCase()}
                 </AvatarFallback>
@@ -109,7 +109,7 @@ export default function ProfilePage() {
                   </div>
                   <div>
                     <span className="text-sm text-gray-600">Bergabung sejak</span>
-                    <p className="font-bold text-gray-900">{user?.createdAt ? formatDate(user.createdAt) : "-"}</p>
+                    <p className="font-bold text-gray-900">-</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 p-3 rounded-xl bg-gradient-to-r from-gray-50 to-white">

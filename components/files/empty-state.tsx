@@ -18,7 +18,7 @@ export function EmptyState({ searchQuery, onUploadClick, disabled = false }: Emp
         </div>
         <h3 className="text-2xl font-bold text-gray-700 mb-4">Tidak Ada File Ditemukan</h3>
         <p className="text-gray-500 mb-8 max-w-md mx-auto text-lg">
-          Tidak ada file yang cocok dengan pencarian "{searchQuery}". Coba gunakan kata kunci yang berbeda.
+          Tidak ada file yang cocok dengan pencarian &quot;{searchQuery}&quot;. Coba gunakan kata kunci yang berbeda.
         </p>
       </div>
     )

@@ -25,7 +25,7 @@ export default function RegisterPage() {
   const { toast } = useToast()
   const router = useRouter()
 
-  const handleRegister = async (e) => {
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsLoading(true)
     const res = await fetch('/api/register', {

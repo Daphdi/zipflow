@@ -87,9 +87,6 @@ export function FileListItem({ file, onPreview, onDownload, onToggleFavorite, on
       try {
         event.preventDefault()
         event.stopPropagation()
-        if (typeof event.stopImmediatePropagation === "function") {
-          event.stopImmediatePropagation()
-        }
       } catch (error) {
         console.warn("Event handling warning:", error)
       }

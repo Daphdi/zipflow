@@ -46,7 +46,7 @@ export function TopNav() {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-3 hover-lift p-2 rounded-xl">
               <Avatar className="h-10 w-10 ring-2 ring-sky-200">
-                <AvatarImage src={user?.avatar || "/placeholder.svg"} />
+                <AvatarImage src={user?.image || "/placeholder.svg"} />
                 <AvatarFallback className="bg-gradient-to-br from-sky-400 to-blue-600 text-white font-bold">
                   {user?.name?.charAt(0).toUpperCase()}
                 </AvatarFallback>
@@ -62,7 +62,7 @@ export function TopNav() {
             <div className="p-3 border-b border-gray-100">
               <div className="flex items-center gap-3">
                 <Avatar className="h-12 w-12">
-                  <AvatarImage src={user?.avatar || "/placeholder.svg"} />
+                  <AvatarImage src={user?.image || "/placeholder.svg"} />
                   <AvatarFallback className="bg-gradient-to-br from-sky-400 to-blue-600 text-white font-bold">
                     {user?.name?.charAt(0).toUpperCase()}
                   </AvatarFallback>

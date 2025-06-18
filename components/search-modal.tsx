@@ -333,7 +333,7 @@ export default function SearchModal({ open, onOpenChange }: SearchModalProps) {
               </div>
               <h3 className="text-xl font-semibold text-slate-300 mb-2">Tidak Ada Hasil</h3>
               <p className="text-slate-500 text-center max-w-md">
-                Tidak ditemukan file yang cocok dengan "{searchQuery}". Coba gunakan kata kunci lain atau ubah filter.
+                Tidak ditemukan file yang cocok dengan &quot;{searchQuery}&quot;. Coba gunakan kata kunci lain atau ubah filter.
               </p>
             </div>
           ) : (

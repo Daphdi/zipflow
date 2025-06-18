@@ -5,7 +5,6 @@ import type React from "react"
 import { createContext, useContext, useEffect, useState } from "react"
 import { useToast } from "@/hooks/use-toast"
 import { useSession } from "next-auth/react"
-import type { FileItem } from "./types"
 
 export interface FileItem {
   id: string
@@ -23,7 +22,7 @@ export interface FileItem {
 
 interface FileManagerContextType {
   files: FileItem[]
-  uploadFile: (file: File) => Promise<void>
+  uploadFile: (file: File) => Promise<FileItem>
   deleteFile: (id: string) => Promise<void>
   toggleFavorite: (id: string) => void
   searchFiles: (query: string) => FileItem[]
@@ -272,7 +271,7 @@ export function FileManagerProvider({ children }: { children: React.ReactNode })
       case "audio":
         return Array.isArray(files) ? files.filter((file) => file.category === "audio") : [];
       case "archives":
-        return Array.isArray(files) ? files.filter((file) => file.category === "archive") : [];
+        return Array.isArray(files) ? files.filter((file) => file.category === "other") : [];
       case "favorites":
         return files.filter((file) => file.isFavorite);
       default:

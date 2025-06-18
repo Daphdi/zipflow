@@ -71,7 +71,12 @@ export function FilesHeader({ viewMode, onViewModeChange, onUploadClick, disable
         </div>
       </div>
 
-      <FilterSortDialog isOpen={showFilterDialog} onClose={() => setShowFilterDialog(false)} />
+      <FilterSortDialog 
+        isOpen={showFilterDialog} 
+        onClose={() => setShowFilterDialog(false)} 
+        onApplyFilter={() => {}} 
+        onApplySort={() => {}} 
+      />
     </>
   )
 }

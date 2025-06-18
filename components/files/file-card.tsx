@@ -120,10 +120,6 @@ export function FileCard({
       try {
         event.preventDefault()
         event.stopPropagation()
-        // Only use stopImmediatePropagation if available
-        if (typeof event.stopImmediatePropagation === "function") {
-          event.stopImmediatePropagation()
-        }
       } catch (error) {
         console.warn("Event handling warning:", error)
       }
@@ -142,9 +138,6 @@ export function FileCard({
       try {
         event.preventDefault()
         event.stopPropagation()
-        if (typeof event.stopImmediatePropagation === "function") {
-          event.stopImmediatePropagation()
-        }
       } catch (error) {
         console.warn("Event handling warning:", error)
       }
@@ -162,9 +155,6 @@ export function FileCard({
         try {
           event.preventDefault()
           event.stopPropagation()
-          if (typeof event.stopImmediatePropagation === "function") {
-            event.stopImmediatePropagation()
-          }
         } catch (error) {
           console.warn("Event handling warning:", error)
         }

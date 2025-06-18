@@ -44,7 +44,7 @@ export function FilePreview({ file, onExternalPreview, className = "" }: FilePre
             </div>
           )}
           <Image
-            src={file.url}
+            src={file.url || "/placeholder.svg"}
             alt={file.name}
             fill
             className="object-contain"

@@ -28,7 +28,7 @@ const FILE_TYPES = {
   spreadsheets: 'spreadsheet',
 } as const;
 
-type FileType = typeof FILE_TYPES[keyof typeof FILE_TYPES];
+type FileType = 'all' | 'image' | 'document' | 'video' | 'audio' | 'spreadsheet';
 
 export default function FilesPage() {
   const { files, deleteFile, toggleFavorite, searchFiles } = useFileManager()
@@ -101,9 +101,13 @@ export default function FilesPage() {
     
     // Show notification if no results found
     if (searchQuery && typeFiltered.length === 0) {
+      let kategori = '';
+      if (['image', 'document', 'video', 'audio', 'spreadsheet'].includes(selectedFileType)) {
+        kategori = ` dalam kategori ${selectedFileType}`;
+      }
       toast({
         title: "Tidak ada hasil",
-        description: `Tidak ditemukan file yang cocok dengan "${searchQuery}"${selectedFileType !== FILE_TYPES.all ? ` dalam kategori ${selectedFileType}` : ''}`,
+        description: `Tidak ditemukan file yang cocok dengan "${searchQuery}"${kategori}`,
         variant: "default",
       });
     }

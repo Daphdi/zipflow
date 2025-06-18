@@ -33,7 +33,7 @@ import {
 } from "lucide-react"
 import { logout } from "@/lib/auth"
 import { showToast } from "@/lib/toast"
-import UploadDialog from "@/components/upload-dialog"
+import { UploadDialog } from "@/components/upload-dialog"
 import SearchModal from "@/components/search-modal"
 import { Sidebar, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 
@@ -271,7 +271,13 @@ export default function DashboardLayout({ children, user, currentPath, onFileUpl
         </div>
 
         {/* Modals */}
-        <UploadDialog open={showUploadDialog} onOpenChange={setShowUploadDialog} onUploadSuccess={handleUploadSuccess} />
+        <UploadDialog 
+          isOpen={showUploadDialog} 
+          onClose={() => setShowUploadDialog(false)} 
+          selectedFiles={[]}
+          onAddMoreFiles={() => {}}
+          onUploadComplete={handleUploadSuccess} 
+        />
         <SearchModal open={showSearchModal} onOpenChange={setShowSearchModal} />
       </div>
     </SidebarProvider>

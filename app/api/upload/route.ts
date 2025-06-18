@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import mysql from 'mysql2/promise';
+import { RowDataPacket } from 'mysql2';
 import { getServerSession } from 'next-auth';
 import { authOptions } from "../auth/[...nextauth]/route";
 
@@ -79,7 +80,7 @@ export async function POST(request: NextRequest) {
     );
     console.log('File data fetched successfully');
 
-    const fileRow = Array.isArray(rows) && rows.length > 0 ? rows[0] : null;
+    const fileRow = Array.isArray(rows) && rows.length > 0 ? (rows[0] as RowDataPacket & { content?: string }) : null;
     if (!fileRow) {
       return NextResponse.json({ error: 'File not found after insert' }, { status: 500 });
     }

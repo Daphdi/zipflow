@@ -35,7 +35,7 @@ export default function LoginForm() {
         showToast("Berhasil masuk! Selamat datang kembali.", "success")
         router.push("/dashboard")
       } else {
-        showToast(result.message, "error")
+        showToast(result.message || "Gagal masuk", "error")
       }
     } catch (error) {
       showToast("Terjadi kesalahan saat masuk", "error")
@@ -60,7 +60,7 @@ export default function LoginForm() {
         showToast("Akun berhasil dibuat! Silakan masuk.", "success")
         setRegisterData({ name: "", email: "", password: "", confirmPassword: "" })
       } else {
-        showToast(result.message, "error")
+        showToast(result.message || "Gagal membuat akun", "error")
       }
     } catch (error) {
       showToast("Terjadi kesalahan saat membuat akun", "error")

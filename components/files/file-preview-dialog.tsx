@@ -48,7 +48,7 @@ export function FilePreviewDialog({
       return (
         <div className="relative w-full h-[60vh] bg-gray-100 rounded-lg overflow-hidden">
           <Image
-            src={file.url}
+            src={file.url || "/placeholder.svg"}
             alt={file.name}
             fill
             className="object-contain"
