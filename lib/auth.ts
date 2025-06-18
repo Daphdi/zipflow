@@ -5,43 +5,52 @@ interface User {
 }
 
 export const login = async (email: string, password: string) => {
-  // Simulasi login - dalam implementasi nyata, ini akan memanggil API
-  const users = JSON.parse(localStorage.getItem("users") || "[]")
-  const user = users.find((u: User) => u.email === email)
+  try {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    })
 
-  if (!user) {
-    return { success: false, message: "Email tidak ditemukan" }
+    const result = await response.json()
+    
+    if (result.success) {
+      // Simpan user ke localStorage untuk session management
+      localStorage.setItem("currentUser", JSON.stringify(result.user))
+    }
+    
+    return result
+  } catch (error) {
+    console.error('Login error:', error)
+    return { success: false, message: "Terjadi kesalahan saat login" }
   }
-
-  // Dalam implementasi nyata, password akan di-hash
-  const storedPassword = localStorage.getItem(`password_${user.id}`)
-  if (storedPassword !== password) {
-    return { success: false, message: "Password salah" }
-  }
-
-  localStorage.setItem("currentUser", JSON.stringify(user))
-  return { success: true, user }
 }
 
 export const register = async (name: string, email: string, password: string) => {
-  const users = JSON.parse(localStorage.getItem("users") || "[]")
+  try {
+    const response = await fetch('/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, password }),
+    })
 
-  // Cek apakah email sudah terdaftar
-  if (users.find((u: User) => u.email === email)) {
-    return { success: false, message: "Email sudah terdaftar" }
+    const result = await response.json()
+    
+    if (result.success) {
+      // Simpan user ke localStorage untuk session management
+      const newUser = { id: Date.now().toString(), name, email }
+      localStorage.setItem("currentUser", JSON.stringify(newUser))
+    }
+    
+    return result
+  } catch (error) {
+    console.error('Register error:', error)
+    return { success: false, message: "Terjadi kesalahan saat register" }
   }
-
-  const newUser: User = {
-    id: Date.now().toString(),
-    name,
-    email,
-  }
-
-  users.push(newUser)
-  localStorage.setItem("users", JSON.stringify(users))
-  localStorage.setItem(`password_${newUser.id}`, password)
-
-  return { success: true, user: newUser }
 }
 
 export const logout = () => {
